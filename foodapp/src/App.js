@@ -1,18 +1,26 @@
 import React, {useEffect, useState} from 'react';
+import Recipe from './Recipe'
 import './App.css';
 
 const App = () => {
 
   const APP_ID = '76f9f481'
   const API_KEY = 'c7fc64c5baca02116eb2781c456231d6'
-
-  const exampleReq = `https://api.edamam.com/search?q=chicken&app_id=${APP_ID}&app_key=${API_KEY}`
+  const [recipes, setRecipes] = useState([]);
  
   const [counter, setCounter] = useState(0);
 
-  useEffect(() => {
-    console.log('Effect has been runned');
-  }, [])
+  useEffect( () => {
+    getRecipes();
+  }, []);
+
+  const getRecipes = async () => {
+    const response = await fetch(`https://api.edamam.com/search?q=chicken&app_id=${APP_ID}&app_key=${API_KEY}`)
+    const data = await response.json();
+    setRecipes(data.hits);
+
+    console.log(data.hits)
+  }
 
   return(
     <div className="App">
@@ -22,7 +30,9 @@ const App = () => {
             Search
           </button>
       </form>
-      <h1 onClick = {() => setCounter(counter + 1)}>{counter}</h1>
+      {recipes.map(recipe =>(
+        <Recipe />
+      ))}
     </div>
   )
 }
