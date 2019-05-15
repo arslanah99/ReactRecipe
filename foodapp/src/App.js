@@ -1,21 +1,31 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+const App = () => {
+
+  const APP_ID = '76f9f481'
+  const API_KEY = 'c7fc64c5baca02116eb2781c456231d6'
+
+  const exampleReq = `https://api.edamam.com/search?q=chicken&app_id=${APP_ID}&app_key=${API_KEY}`
+ 
+  const [counter, setCounter] = useState(0);
+
+  useEffect(() => {
+    console.log('Effect has been runned');
+  }, [])
+
+  return(
+    <div className="App">
+      <form className="search-form">
+        <input type="text" className="search-bar" />
+          <button type="submit" className="search-button">
+            Search
+          </button>
+      </form>
+      <h1 onClick = {() => setCounter(counter + 1)}>{counter}</h1>
+    </div>
+  )
 }
+
 
 export default App;
