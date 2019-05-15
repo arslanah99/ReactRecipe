@@ -1,24 +1,31 @@
-.App {
-  text-align: center;
+.App{
+  min-height: 100vh;
+  background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.search-form{
+  min-height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.search-bar{
+  width: 50%;
+  border: none;
+  padding: 10px
 }
 
-.App-intro {
-  font-size: large;
+.search-button{
+  background:  linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+  border:none;
+  padding: 10px 20px;
+  color: white
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.recipes{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
+
